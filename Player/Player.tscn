@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://Player/SpriteSheet.png" type="Texture" id=1]
+[ext_resource path="res://Player/BestSpriteSheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "Idle"
 length = 1.2
 loop = true
@@ -17,22 +17,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ 6, 7 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:offset")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ Vector2( 0, 0 ), Vector2( 0, 1 ) ]
+"values": [ 0, 1 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 resource_name = "Jump"
 loop = true
 tracks/0/type = "value"
@@ -48,63 +36,11 @@ tracks/0/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "KickLeft"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 18 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Hitbox/CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.04, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ false, true ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.6 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ 0 ],
-"method": "set_state"
-} ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("Hitbox/CollisionShape2D:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( -8.84976, 2.188 ) ]
-}
-
 [sub_resource type="Animation" id=5]
-resource_name = "KickRight"
-length = 0.6
+resource_name = "KickLeft"
+length = 1.05
+loop = true
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -112,10 +48,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.65, 0.75, 0.85, 0.95 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 18 ]
+"values": [ 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Hitbox/CollisionShape2D:disabled")
@@ -124,7 +60,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.04, 0.6 ),
+"times": PoolRealArray( 0.5, 0.75 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -136,7 +72,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.6 ),
+"times": PoolRealArray( 1.05 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [ 0 ],
@@ -153,13 +89,14 @@ tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 8.85017, 2.08824 ) ]
+"values": [ Vector2( -10.1213, 1.53401 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "Walk"
-length = 0.6
+[sub_resource type="Animation" id=4]
+resource_name = "KickRight"
+length = 1.05
 loop = true
+step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -167,17 +104,72 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.65, 0.75, 0.85, 0.95 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1.05 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [ 0 ],
+"method": "set_state"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Hitbox/CollisionShape2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 10.0848, 1.53401 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+length = 0.9
+loop = true
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45, 0.6, 0.75 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 12, 13, 14, 15, 16, 17 ]
+"values": [ 20, 21, 22, 23, 24, 25 ]
 }
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 5, 13 )
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 6, 13 )
 
-[sub_resource type="CircleShape2D" id=6]
-radius = 5.08893
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 4.40095, 9.16039 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
@@ -185,36 +177,36 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-vframes = 4
-hframes = 6
-frame = 18
+flip_h = true
+vframes = 6
+hframes = 10
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Idle = SubResource( 3 )
-anims/Jump = SubResource( 4 )
-anims/KickLeft = SubResource( 7 )
-anims/KickRight = SubResource( 5 )
-anims/Walk = SubResource( 1 )
+anims/Idle = SubResource( 1 )
+anims/Jump = SubResource( 2 )
+anims/KickLeft = SubResource( 5 )
+anims/KickRight = SubResource( 4 )
+anims/Walk = SubResource( 6 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 1 )
-shape = SubResource( 2 )
+position = Vector2( 0.5, 4 )
+shape = SubResource( 7 )
 
 [node name="Hurtbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2( 0, 1 )
-shape = SubResource( 2 )
+position = Vector2( 0.5, 4 )
+shape = SubResource( 7 )
 
 [node name="Hitbox" type="Area2D" parent="."]
 collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2( 8.85017, 2.08824 )
-shape = SubResource( 6 )
-disabled = true
+position = Vector2( -10.1213, 1.53401 )
+rotation = 1.5708
+shape = SubResource( 8 )
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
