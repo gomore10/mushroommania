@@ -21,10 +21,11 @@ var kick_input = false
 
 onready var Sprite = $Sprite
 onready var Animate = $AnimationPlayer
+onready var HitboxCollision = $Hitbox/CollisionShape2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	HitboxCollision.disabled = true
 
 func _process(_delta):
 	walk_input_vec = Vector2.ZERO
@@ -141,6 +142,9 @@ func _physics_process(delta):
 	elif velocity.y>0: #if falling
 		onground = false
 		state=states.fall
+	
+	if old_velocity.x!=0 and velocity.x==0: #if hit a wall
+		if state==states.walk: state=states.stand
 	
 	#set animation
 	swap_animation()
